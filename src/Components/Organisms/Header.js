@@ -6,9 +6,7 @@ import Heading from 'Components/Atoms/Heading';
 import Paragraph from 'Components/Atoms/Paragraph';
 import Button from 'Components/Atoms/Button';
 
-const StyledWrapper = styled.header`
-  margin-bottom: 100px;
-`;
+const StyledWrapper = styled.header``;
 
 const StyledParagraph = styled(Paragraph)`
   padding: 0 15px 25px;
@@ -49,7 +47,7 @@ const Header = () => {
         </StyledSvg>
       </StyledColumn>
       <StyledColumn>
-        <StyledHeading>More than just shorter links</StyledHeading>
+        <StyledHeading as="h1">More than just shorter links</StyledHeading>
         <StyledParagraph>
           Build your brand’s recognition and get detailed insights on how your links are performing.
         </StyledParagraph>
