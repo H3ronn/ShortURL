@@ -1,17 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledWrapper = styled.div`
-  width: 50px;
-  height: 50px;
+const StyledWrapper = styled.button`
+  width: 25px;
+  height: 35px;
+  background: none;
+  border: none;
+  padding: 0;
 `;
 
 const StyledLine = styled.div`
   width: 100%;
-  height: 8px;
-  background-color: black;
+  height: 4px;
+  background-color: ${({ theme }) => theme.gray};
   /* background-color: ${({ theme }) => theme.darkViolet}; */
-  margin: 5px 0;
+
+  &:nth-child(2) {
+    margin: 6px 0;
+  }
 `;
 
 const MobileNavButton = props => {
