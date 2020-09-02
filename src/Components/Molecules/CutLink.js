@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from 'Components/Atoms/Button';
 import Input from 'Components/Atoms/Input';
 import background from 'assets/bg-shorten-mobile.svg';
+import axios from 'axios';
 
 const StyledWrapper = styled.div`
   background: url(${background}) no-repeat;
@@ -25,14 +26,37 @@ const CutLink = () => {
   const [inputLinkValue, setInputLinkValue] = useState('');
   const changeInputLinkValue = e => setInputLinkValue(e.target.value);
 
+  const getShortLink = e => {
+    console.log(e);
+
+    const inputValue = document.querySelector('#shortLinkInput').value;
+
+    axios
+      .post('https://rel.ink/api/links/', {
+        url: inputValue,
+      })
+      .then(shortLink => {
+        console.log(shortLink);
+        console.log(`https://rel.ink/${shortLink.data.hashid}`);
+      })
+      .catch(e => alert(e));
+    //     POST https://rel.ink/api/links/
+
+    // {
+    //   "url": "https://news.ycombinator.com/"
+    // }
+  };
+
   return (
     <StyledWrapper>
       <Input
         placeholder="Shorten a link here..."
         value={inputLinkValue}
         onChange={changeInputLinkValue}
+        name="shortLinkInput"
+        id="shortLinkInput"
       />
-      <StyledButton>Shorten It!</StyledButton>
+      <StyledButton onClick={getShortLink}>Shorten It!</StyledButton>
     </StyledWrapper>
   );
 };
