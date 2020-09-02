@@ -10,7 +10,7 @@ import Footer from 'Components/Organisms/Footer/Footer';
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <main className="Wrapper">
+      <main>
         <NavigationBar />
         <Header />
         <Statistics />

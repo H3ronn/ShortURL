@@ -15,7 +15,6 @@ const StyledImgWrapper = styled.div`
   background-color: ${({ theme }) => theme.darkViolet};
   width: 90px;
   height: 90px;
-  /* padding: px; */
   margin: 0 auto;
   transform: translateY(-50%);
   border-radius: 50%;
@@ -33,7 +32,7 @@ const Card = ({ head, children, img }) => {
   return (
     <StyledWrapper>
       <StyledImgWrapper>
-        <img src={img} />
+        <img src={img} alt="" />
       </StyledImgWrapper>
       <StyledHeading as="h3">{head}</StyledHeading>
       <Paragraph>{children}</Paragraph>

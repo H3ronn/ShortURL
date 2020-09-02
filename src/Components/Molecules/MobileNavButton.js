@@ -7,13 +7,14 @@ const StyledWrapper = styled.button`
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
+  outline: none;
 `;
 
 const StyledLine = styled.div`
   width: 100%;
   height: 4px;
   background-color: ${({ theme }) => theme.gray};
-  /* background-color: ${({ theme }) => theme.darkViolet}; */
 
   &:nth-child(2) {
     margin: 6px 0;

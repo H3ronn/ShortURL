@@ -5,10 +5,8 @@ import socialMediaIcon1 from 'assets/icon-facebook.svg';
 import socialMediaIcon2 from 'assets/icon-twitter.svg';
 import socialMediaIcon3 from 'assets/icon-pinterest.svg';
 import socialMediaIcon4 from 'assets/icon-instagram.svg';
-// // import Header from 'Components/Organisms/Header';
 
 const StyledWrapper = styled.footer`
-  /* height: 100vh; */
   background-color: ${({ theme }) => theme.veryDarkViolet};
   text-align: center;
 `;
@@ -94,16 +92,16 @@ const Footer = () => {
         </ul>
         <StyledSocialMediaList>
           <StyledSocialMediaLink href="https://www.facebook.com">
-            <img src={socialMediaIcon1} />
+            <img src={socialMediaIcon1} alt="facebook logo icon" />
           </StyledSocialMediaLink>
           <StyledSocialMediaLink href="https://www.twitter.com">
-            <img src={socialMediaIcon2} />
+            <img src={socialMediaIcon2} alt="twitter logo icon" />
           </StyledSocialMediaLink>
           <StyledSocialMediaLink href="https://www.pinterest.com">
-            <img src={socialMediaIcon3} />
+            <img src={socialMediaIcon3} alt="pinterest logo icon" />
           </StyledSocialMediaLink>
           <StyledSocialMediaLink href="https://www.instagram.com">
-            <img src={socialMediaIcon4} />
+            <img src={socialMediaIcon4} alt="instagram logo icon" />
           </StyledSocialMediaLink>
         </StyledSocialMediaList>
       </nav>

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as HeaderIcon } from 'assets/illustration-working.svg';
 import HeaderIcon2 from 'assets/illustration-working.svg';
 import Heading from 'Components/Atoms/Heading';
 import Paragraph from 'Components/Atoms/Paragraph';
@@ -19,7 +18,6 @@ const StyledHeading = styled(Heading)`
 
 const StyledColumn = styled.div`
   width: 100%;
-  /* height: 50vh; */
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -30,12 +28,8 @@ const StyledSvg = styled.div`
 `;
 
 const StyledImg = styled.img`
-  /* width: 100%; */
   width: 500px;
   height: 350px;
-  /* position: absolute; */
-  /* left: 50%;
-  transform: translateX(-40%); */
 `;
 
 const Header = () => {
@@ -43,7 +37,6 @@ const Header = () => {
     <StyledWrapper>
       <StyledColumn>
         <StyledSvg>
-          {/* <HeaderIcon /> */}
           <StyledImg src={HeaderIcon2} />
         </StyledSvg>
       </StyledColumn>
