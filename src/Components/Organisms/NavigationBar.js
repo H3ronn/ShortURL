@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import MobileNavButton from 'Components/Molecules/MobileNavButton';
+import NavBarModal from 'Components/Molecules/NavBarModal';
 
 const StyledNav = styled.nav`
   display: flex;
@@ -10,10 +11,18 @@ const StyledNav = styled.nav`
 `;
 
 const NavigationBar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <StyledNav>
       <Logo />
-      <MobileNavButton elo="hehe" />
+      <MobileNavButton
+        // onClick={() => {
+        //   console.log('elo');
+        // }}
+        elo={() => setIsModalOpen(prevState => !prevState)}
+      />
+      {isModalOpen && <NavBarModal />}
     </StyledNav>
   );
 };

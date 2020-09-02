@@ -5,10 +5,12 @@ import Input from 'Components/Atoms/Input';
 import background from 'assets/bg-shorten-mobile.svg';
 
 const StyledWrapper = styled.div`
+  background: url(${background}) no-repeat;
   background-color: ${({ theme }) => theme.darkViolet};
-  background-image: url(${background});
+  /* background-image: url(${background}); */
   background-position: 100% 0%;
-  background-repeat: no-repeat;
+  background-size: 71%;
+  /* background-repeat: no-repeat; */
   display: flex;
   flex-direction: column;
   padding: 20px;

@@ -20,9 +20,9 @@ const StyledLine = styled.div`
   }
 `;
 
-const MobileNavButton = props => {
+const MobileNavButton = ({ elo }) => {
   return (
-    <StyledWrapper>
+    <StyledWrapper onClick={elo}>
       <StyledLine></StyledLine>
       <StyledLine></StyledLine>
       <StyledLine></StyledLine>

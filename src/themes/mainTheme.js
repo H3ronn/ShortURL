@@ -10,6 +10,7 @@ export const theme = {
   bold: 700,
   fontSize: {
     normal: '18px',
+    h4: '18px',
     h3: '25px',
     h2: '30px',
     h1: '36px',

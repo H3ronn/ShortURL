@@ -14,6 +14,7 @@ const StyledParagraph = styled(Paragraph)`
 
 const StyledHeading = styled(Heading)`
   margin: 20px 0 15px;
+  font-size: 36px;
 `;
 
 const StyledColumn = styled.div`
@@ -47,7 +48,7 @@ const Header = () => {
         </StyledSvg>
       </StyledColumn>
       <StyledColumn>
-        <StyledHeading as="h1">More than just shorter links</StyledHeading>
+        <StyledHeading as="h2">More than just shorter links</StyledHeading>
         <StyledParagraph>
           Build your brand’s recognition and get detailed insights on how your links are performing.
         </StyledParagraph>
