@@ -10,8 +10,7 @@ const StyledWrapper = styled.section`
   background-color: hsl(230, 25%, 95%);
   margin-top: 170px;
   text-align: center;
-
-  /* padding-bottom: 1000px; */
+  padding-bottom: 100px;
 `;
 
 const StyledCutLinksWrapper = styled.div`
@@ -33,14 +32,15 @@ const StyledCardWrapper = styled.div`
     top: 0;
     left: 50%;
     width: 10px;
-    height: 100%;
-    background-color: red;
-    z-index: -1;
+    height: 99%;
+    background-color: ${({ theme }) => theme.cyan};
+    transform: translateX(-50%);
   }
 `;
 
 const StyledCard = styled(Card)`
   margin-bottom: 2225px;
+  z-index: 21;
 `;
 
 const Statistics = () => {

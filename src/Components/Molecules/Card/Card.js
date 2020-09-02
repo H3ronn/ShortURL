@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import naChwile from 'assets/icon-fully-customizable.svg';
 import Heading from 'Components/Atoms/Heading';
 import Paragraph from 'Components/Atoms/Paragraph';
 
 const StyledWrapper = styled.article`
   background-color: white;
-  margin: 100px 20px;
+  margin: 100px 20px 0;
   padding: 0 10px 40px;
+  position: relative;
+  z-index: 1;
 `;
 
 const StyledImgWrapper = styled.div`
@@ -21,11 +22,11 @@ const StyledImgWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 `;
 
 const StyledHeading = styled(Heading)`
-  padding-bottom: 15px;
+  padding-bottom: 10px;
+  margin-top: -15px;
 `;
 
 const Card = ({ head, children, img }) => {

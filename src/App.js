@@ -4,15 +4,16 @@ import { theme } from 'themes/mainTheme';
 import NavigationBar from 'Components/Organisms/NavigationBar';
 import Header from 'Components/Organisms/Header';
 import Statistics from 'Components/Organisms/Statistics';
+// import Boost from 'Components/Molecules/Boost';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div className="Wrapper">
+      <main className="Wrapper">
         <NavigationBar />
         <Header />
         <Statistics />
-      </div>
+      </main>
     </ThemeProvider>
   );
 };
