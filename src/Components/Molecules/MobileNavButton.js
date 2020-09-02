@@ -20,9 +20,9 @@ const StyledLine = styled.div`
   }
 `;
 
-const MobileNavButton = ({ elo }) => {
+const MobileNavButton = ({ showModalFn }) => {
   return (
-    <StyledWrapper onClick={elo}>
+    <StyledWrapper onClick={showModalFn}>
       <StyledLine></StyledLine>
       <StyledLine></StyledLine>
       <StyledLine></StyledLine>

@@ -16,12 +16,7 @@ const NavigationBar = () => {
   return (
     <StyledNav>
       <Logo />
-      <MobileNavButton
-        // onClick={() => {
-        //   console.log('elo');
-        // }}
-        elo={() => setIsModalOpen(prevState => !prevState)}
-      />
+      <MobileNavButton showModalFn={() => setIsModalOpen(prevState => !prevState)} />
       {isModalOpen && <NavBarModal />}
     </StyledNav>
   );
