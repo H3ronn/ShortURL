@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CutLinkForm from 'Components/Organisms/Statistics/CutLinkForm';
 import SavedShortLinks from 'Components/Organisms/Statistics/SavedShortLinks';
@@ -9,10 +9,12 @@ const StyledWrapper = styled.div`
 `;
 
 const ShortLinksWrapper = () => {
-  const [shortLinksTable, setShortLinksTable] = useState(['https://rel.ink/kQ1Zbd']);
-  const [originalLinksTable, setOriginalLinksTable] = useState([
-    'https://developer.mozilla.org/pl/docs/Web/API/Event',
-  ]);
+  const [shortLinksTable, setShortLinksTable] = useState(
+    localStorage.getItem('shortLinks') ? localStorage.getItem('shortLinks').split(',') : [],
+  );
+  const [originalLinksTable, setOriginalLinksTable] = useState(
+    localStorage.getItem('originalLinks') ? localStorage.getItem('originalLinks').split(',') : [],
+  );
 
   const getShortLink = async e => {
     e.preventDefault();
@@ -25,13 +27,18 @@ const ShortLinksWrapper = () => {
       } = await axios.post('https://rel.ink/api/links/', {
         url: originalLinkValue,
       });
-      console.log('poszlo');
+      localStorage.setItem('shortLinks', [...shortLinksTable, `https://rel.ink/${hashid}`]);
+      localStorage.setItem('originalLinks', [...originalLinksTable, originalLinkValue]);
       setShortLinksTable(prevState => [...prevState, `https://rel.ink/${hashid}`]);
       setOriginalLinksTable(prevState => [...prevState, originalLinkValue]);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    // localStorage.clear();
+  }, []);
 
   return (
     <StyledWrapper>
