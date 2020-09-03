@@ -27,6 +27,7 @@ const StyledMenuWrapper = styled.ul``;
 
 const StyledLoginButtonsWrapper = styled.ul`
   border-top: 1px solid white;
+  margin: 0 30px;
   margin-top: 30px;
   padding-top: 10px;
 `;
