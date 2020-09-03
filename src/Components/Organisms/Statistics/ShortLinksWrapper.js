@@ -27,8 +27,8 @@ const ShortLinksWrapper = () => {
       } = await axios.post('https://rel.ink/api/links/', {
         url: originalLinkValue,
       });
-      localStorage.setItem('shortLinks', [...shortLinksTable, `https://rel.ink/${hashid}`]);
-      localStorage.setItem('originalLinks', [...originalLinksTable, originalLinkValue]);
+      // localStorage.setItem('shortLinks', [...shortLinksTable, `https://rel.ink/${hashid}`]);
+      // localStorage.setItem('originalLinks', [...originalLinksTable, originalLinkValue]);
       setShortLinksTable(prevState => [...prevState, `https://rel.ink/${hashid}`]);
       setOriginalLinksTable(prevState => [...prevState, originalLinkValue]);
     } catch (error) {
@@ -38,7 +38,9 @@ const ShortLinksWrapper = () => {
 
   useEffect(() => {
     // localStorage.clear();
-  }, []);
+    localStorage.setItem('shortLinks', shortLinksTable);
+    localStorage.setItem('originalLinks', originalLinksTable);
+  }, [originalLinksTable, shortLinksTable]);
 
   return (
     <StyledWrapper>
