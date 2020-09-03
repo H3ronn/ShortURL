@@ -37,13 +37,16 @@ const StyledButton = styled(Button)`
 `;
 
 const SavedShortLinks = ({ originalLink, shortLink }) => {
+  const copyShortLink = () => navigator.clipboard.writeText(shortLink);
   return (
     <StyledWrapper>
       <OriginalLink>{originalLink}</OriginalLink>
       <ShortLink>
-        <StyledA href={shortLink}>{shortLink}</StyledA>
+        <StyledA id="test" href={shortLink}>
+          {shortLink}
+        </StyledA>
       </ShortLink>
-      <StyledButton>Copy</StyledButton>
+      <StyledButton onClick={copyShortLink}>Copy</StyledButton>
     </StyledWrapper>
   );
 };
