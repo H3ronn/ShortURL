@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import CutLinkForm from 'Components/Organisms/Statistics/CutLinkForm';
+import SavedShortLinks from 'Components/Organisms/Statistics/SavedShortLinks';
 import axios from 'axios';
 
 const StyledWrapper = styled.div`
@@ -8,45 +9,36 @@ const StyledWrapper = styled.div`
 `;
 
 const ShortLinksWrapper = () => {
-  const [shortLinksTable, setShortLinksTable] = useState([]);
-
-  const getShortLink2 = e => {
-    e.preventDefault();
-
-    console.log(e.target);
-
-    axios
-      .post('https://rel.ink/api/links/', {
-        url: e.target[0].value,
-      })
-      .then(shortLink => {
-        console.log(shortLink);
-        console.log(`https://rel.ink/${shortLink.data.hashid}`);
-        setShortLinksTable(prevState => [...prevState, `https://rel.ink/${shortLink.data.hashid}`]);
-      })
-      .catch(e => console.log('Nieprawidłowy lub za krótki link'));
-  };
+  const [shortLinksTable, setShortLinksTable] = useState(['https://rel.ink/kQ1Zbd']);
+  const [originalLinksTable, setOriginalLinksTable] = useState([
+    'https://developer.mozilla.org/pl/docs/Web/API/Event',
+  ]);
 
   const getShortLink = async e => {
     e.preventDefault();
+    console.log('poszlo');
+    const originalLinkValue = e.target[0].value;
 
     try {
       const {
         data: { hashid },
       } = await axios.post('https://rel.ink/api/links/', {
-        url: e.target[0].value,
+        url: originalLinkValue,
       });
+      console.log('poszlo');
       setShortLinksTable(prevState => [...prevState, `https://rel.ink/${hashid}`]);
+      setOriginalLinksTable(prevState => [...prevState, originalLinkValue]);
     } catch (error) {
       console.log(error);
     }
-
-    // console.log(`https://rel.ink/${shortLink.data.hashid}`);
   };
 
   return (
     <StyledWrapper>
       <CutLinkForm getShortLinkFn={getShortLink} />
+      {shortLinksTable.map((link, index) => (
+        <SavedShortLinks shortLink={link} originalLink={originalLinksTable[index]} />
+      ))}
     </StyledWrapper>
   );
 };

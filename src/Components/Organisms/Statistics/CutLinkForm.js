@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Button from 'Components/Atoms/Button';
 import Input from 'Components/Atoms/Input';
 import background from 'assets/bg-shorten-mobile.svg';
-import axios from 'axios';
 
 const StyledWrapper = styled.form`
   background: url(${background}) no-repeat;
