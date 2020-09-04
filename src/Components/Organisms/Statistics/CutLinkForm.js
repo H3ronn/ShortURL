@@ -4,7 +4,7 @@ import Button from 'Components/Atoms/Button';
 import Input from 'Components/Atoms/Input';
 import background from 'assets/bg-shorten-mobile.svg';
 
-const StyledWrapper = styled.form`
+const StyledForm = styled.form`
   background: url(${background}) no-repeat;
   background-color: ${({ theme }) => theme.darkViolet};
   background-position: 100% 0%;
@@ -26,7 +26,7 @@ const CutLinkForm = ({ getShortLinkFn }) => {
   const changeInputLinkValue = e => setInputLinkValue(e.target.value);
 
   return (
-    <StyledWrapper onSubmit={getShortLinkFn}>
+    <StyledForm onSubmit={getShortLinkFn}>
       <Input
         placeholder="Shorten a link here..."
         value={inputLinkValue}
@@ -35,7 +35,7 @@ const CutLinkForm = ({ getShortLinkFn }) => {
         id="shortLinkInput"
       />
       <StyledButton type="submit">Shorten It!</StyledButton>
-    </StyledWrapper>
+    </StyledForm>
   );
 };
 
