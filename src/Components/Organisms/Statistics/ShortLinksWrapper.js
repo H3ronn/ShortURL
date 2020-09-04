@@ -36,8 +36,29 @@ const ShortLinksWrapper = () => {
     }
   };
 
+  // useEffect(() => {
+  // localStorage.clear();
+  // });
+
   useEffect(() => {
     // localStorage.clear();
+    // if (shortLinksTable.length > 3) {
+    //   shortLinksTable.shift();
+    //   originalLinksTable.shift();
+    //   console.log('shortLinksTable');
+    //   console.log(shortLinksTable);
+    //   console.log('shortLinksTable');
+    //   console.log('originalLinksTable');
+    //   console.log(originalLinksTable);
+    //   console.log('originalLinksTable');
+    //   // const newShortLinksTable = shortLinksTable;
+    //   // console.log(shortLinksTable.shift());
+    //   // setShortLinksTable([...newShortLinksTable]);
+    // }
+    console.log('poza ifem');
+    console.log(shortLinksTable);
+    console.log(originalLinksTable);
+    console.log('poza ifem');
     localStorage.setItem('shortLinks', shortLinksTable);
     localStorage.setItem('originalLinks', originalLinksTable);
   }, [originalLinksTable, shortLinksTable]);
@@ -45,9 +66,17 @@ const ShortLinksWrapper = () => {
   return (
     <StyledWrapper>
       <CutLinkForm getShortLinkFn={getShortLink} />
-      {shortLinksTable.map((link, index) => (
-        <SavedShortLinks shortLink={link} originalLink={originalLinksTable[index]} />
-      ))}
+      {shortLinksTable
+        .slice()
+        .reverse()
+        .map((link, index) => (
+          <SavedShortLinks
+            shortLink={link}
+            originalLink={originalLinksTable[originalLinksTable.length - 1 - index]}
+          />
+        ))}
+      {/* reverse() zeby najnowszy był u góry nie na dole 
+      najpierw slice() zeby utworzyć nową tablice a potem dopiro reverse() bo reverse() mutuje oryginał*/}
     </StyledWrapper>
   );
 };
