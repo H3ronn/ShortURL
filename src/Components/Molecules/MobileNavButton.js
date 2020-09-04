@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 const StyledWrapper = styled.button`
   width: 25px;
-  height: 35px;
+  max-height: 35px;
+  margin: 10px;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  outline: none;
+  /* outline: none; */
 `;
 
 const StyledLine = styled.div`

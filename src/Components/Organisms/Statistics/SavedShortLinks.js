@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import Button from 'Components/Atoms/Button';
 
 const StyledWrapper = styled.div`
@@ -34,10 +34,14 @@ const StyledButton = styled(Button)`
   border-radius: 10px;
   padding: 8px 0;
   margin: 0 10px;
+  ${({ isCopied }) =>
+    isCopied &&
+    css`
+      background-color: ${({ theme }) => theme.darkViolet};
+    `}
 `;
 
-const SavedShortLinks = ({ originalLink, shortLink }) => {
-  const copyShortLink = () => navigator.clipboard.writeText(shortLink);
+const SavedShortLinks = ({ originalLink, shortLink, copyShortLinkFn, isCopied, setIsCopied }) => {
   return (
     <StyledWrapper>
       <OriginalLink>{originalLink}</OriginalLink>
@@ -46,7 +50,9 @@ const SavedShortLinks = ({ originalLink, shortLink }) => {
           {shortLink}
         </StyledA>
       </ShortLink>
-      <StyledButton onClick={copyShortLink}>Copy</StyledButton>
+      <StyledButton isCopied={isCopied} onClick={() => copyShortLinkFn(shortLink)}>
+        {isCopied ? 'Copied' : 'Copy'}
+      </StyledButton>
     </StyledWrapper>
   );
 };

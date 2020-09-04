@@ -15,6 +15,7 @@ const ShortLinksWrapper = () => {
   const [originalLinksTable, setOriginalLinksTable] = useState(
     localStorage.getItem('originalLinks') ? localStorage.getItem('originalLinks').split(',') : [],
   );
+  const [handleCopiedLink, setHandleCopiedLink] = useState('');
 
   const getShortLink = async e => {
     e.preventDefault();
@@ -51,19 +52,30 @@ const ShortLinksWrapper = () => {
     localStorage.setItem('originalLinks', originalLinksTable);
   }, [originalLinksTable, shortLinksTable]);
 
+  const copyShortLink = shortLink => {
+    console.log(`elo ${shortLink}`);
+    navigator.clipboard.writeText(shortLink);
+
+    setHandleCopiedLink(shortLink);
+  };
+
   return (
     <StyledWrapper>
       <CutLinkForm getShortLinkFn={getShortLink} />
       {shortLinksTable
         .slice()
         .reverse()
-        .map((link, index) => (
-          <SavedShortLinks
-            key={link}
-            shortLink={link}
-            originalLink={originalLinksTable[originalLinksTable.length - 1 - index]}
-          />
-        ))}
+        .map((shortLink, index) => {
+          return (
+            <SavedShortLinks
+              key={shortLink}
+              shortLink={shortLink}
+              originalLink={originalLinksTable[originalLinksTable.length - 1 - index]}
+              copyShortLinkFn={copyShortLink}
+              isCopied={shortLink === handleCopiedLink ? true : false}
+            />
+          );
+        })}
       {/* reverse() zeby najnowszy był u góry nie na dole 
       najpierw slice() zeby utworzyć nową tablice a potem dopiro reverse() bo reverse() mutuje oryginał*/}
     </StyledWrapper>
