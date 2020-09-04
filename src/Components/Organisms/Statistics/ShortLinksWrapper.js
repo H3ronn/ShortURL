@@ -42,23 +42,11 @@ const ShortLinksWrapper = () => {
 
   useEffect(() => {
     // localStorage.clear();
-    // if (shortLinksTable.length > 3) {
-    //   shortLinksTable.shift();
-    //   originalLinksTable.shift();
-    //   console.log('shortLinksTable');
-    //   console.log(shortLinksTable);
-    //   console.log('shortLinksTable');
-    //   console.log('originalLinksTable');
-    //   console.log(originalLinksTable);
-    //   console.log('originalLinksTable');
-    //   // const newShortLinksTable = shortLinksTable;
-    //   // console.log(shortLinksTable.shift());
-    //   // setShortLinksTable([...newShortLinksTable]);
-    // }
-    console.log('poza ifem');
-    console.log(shortLinksTable);
-    console.log(originalLinksTable);
-    console.log('poza ifem');
+    if (shortLinksTable.length > 5) {
+      shortLinksTable.shift();
+      originalLinksTable.shift();
+    }
+
     localStorage.setItem('shortLinks', shortLinksTable);
     localStorage.setItem('originalLinks', originalLinksTable);
   }, [originalLinksTable, shortLinksTable]);
@@ -71,6 +59,7 @@ const ShortLinksWrapper = () => {
         .reverse()
         .map((link, index) => (
           <SavedShortLinks
+            key={link}
             shortLink={link}
             originalLink={originalLinksTable[originalLinksTable.length - 1 - index]}
           />
