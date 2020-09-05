@@ -8,20 +8,18 @@ import Statistics from 'Components/Organisms/Statistics/Statistics';
 import Boost from 'Components/Molecules/Boost';
 import Footer from 'Components/Organisms/Footer/Footer';
 
-const StyledNavigationBar = styled(NavigationBar)`
-  position: fixed;
-`;
+const StyledMainWrapper = styled.main``;
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <main>
-        <StyledNavigationBar />
+      <StyledMainWrapper>
+        <NavigationBar />
         <Header />
         <Statistics />
         <Boost />
         <Footer />
-      </main>
+      </StyledMainWrapper>
     </ThemeProvider>
   );
 };

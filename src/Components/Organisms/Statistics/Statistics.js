@@ -11,6 +11,9 @@ const StyledWrapper = styled.section`
   margin-top: 170px;
   text-align: center;
   padding-bottom: 100px;
+  @media (min-width: 1000px) {
+    padding: 0 70px;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
