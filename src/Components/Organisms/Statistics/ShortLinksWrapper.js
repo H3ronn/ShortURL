@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import CutLinkForm from 'Components/Organisms/Statistics/CutLinkForm';
-import SavedShortLinks from 'Components/Organisms/Statistics/SavedShortLinks';
+import SavedShortLink from 'Components/Organisms/Statistics/SavedShortLink';
 import axios from 'axios';
 
 const StyledWrapper = styled.div`
-  transform: translateY(-83.5px);
+  transform: ${({ height }) => `translateY(-${height / 2}px)`};
+`;
+
+const StyledCutLinkForm = styled(CutLinkForm)`
+  /* transform: translateY(-50%); */
 `;
 
 const ShortLinksWrapper = () => {
@@ -16,6 +20,10 @@ const ShortLinksWrapper = () => {
     localStorage.getItem('originalLinks') ? localStorage.getItem('originalLinks').split(',') : [],
   );
   const [handleCopiedLink, setHandleCopiedLink] = useState('');
+
+  const [handleInputHeight, setHandleInputHeight] = useState(0);
+
+  const inputFieldRef = useRef(null);
 
   const getShortLink = async e => {
     e.preventDefault();
@@ -37,12 +45,11 @@ const ShortLinksWrapper = () => {
     }
   };
 
-  // useEffect(() => {
-  // localStorage.clear();
-  // });
+  useEffect(() => {
+    setHandleInputHeight(inputFieldRef.current.clientHeight);
+  }, []);
 
   useEffect(() => {
-    // localStorage.clear();
     if (shortLinksTable.length > 5) {
       shortLinksTable.shift();
       originalLinksTable.shift();
@@ -60,14 +67,14 @@ const ShortLinksWrapper = () => {
   };
 
   return (
-    <StyledWrapper>
-      <CutLinkForm getShortLinkFn={getShortLink} />
+    <StyledWrapper height={handleInputHeight}>
+      <StyledCutLinkForm getShortLinkFn={getShortLink} inputFieldRef={inputFieldRef} />
       {shortLinksTable
         .slice()
         .reverse()
         .map((shortLink, index) => {
           return (
-            <SavedShortLinks
+            <SavedShortLink
               key={shortLink}
               shortLink={shortLink}
               originalLink={originalLinksTable[originalLinksTable.length - 1 - index]}

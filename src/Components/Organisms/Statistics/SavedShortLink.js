@@ -10,18 +10,33 @@ const StyledWrapper = styled.div`
   text-align: start;
   font-size: 16px;
   overflow: hidden;
+  @media (min-width: 1000px) {
+    display: flex;
+    padding: 20px 0;
+    align-items: center;
+  }
 `;
 
-const OriginalLink = styled.p`
+const StyledOriginalLink = styled.p`
   padding: 5px 10px 10px;
   width: 100%;
   border-bottom: 1px gray solid;
   font-weight: 500;
+  /* text-overflow: ellipsis; */
+  word-break: break-all;
+  @media (min-width: 1000px) {
+    border-bottom: none;
+    flex: 3;
+  }
 `;
 
 const ShortLink = styled.p`
   padding: 10px;
   font-weight: 500;
+  @media (min-width: 1000px) {
+    flex: 1;
+    text-align: end;
+  }
 `;
 
 const StyledA = styled.a`
@@ -39,12 +54,17 @@ const StyledButton = styled(Button)`
     css`
       background-color: ${({ theme }) => theme.darkViolet};
     `}
+
+  @media (min-width: 1000px) {
+    flex: 0.6;
+    height: 44px;
+  }
 `;
 
-const SavedShortLinks = ({ originalLink, shortLink, copyShortLinkFn, isCopied, setIsCopied }) => {
+const SavedShortLink = ({ originalLink, shortLink, copyShortLinkFn, isCopied, setIsCopied }) => {
   return (
     <StyledWrapper>
-      <OriginalLink>{originalLink}</OriginalLink>
+      <StyledOriginalLink>{originalLink}</StyledOriginalLink>
       <ShortLink>
         <StyledA id="test" href={shortLink}>
           {shortLink}
@@ -57,4 +77,4 @@ const SavedShortLinks = ({ originalLink, shortLink, copyShortLinkFn, isCopied, s
   );
 };
 
-export default SavedShortLinks;
+export default SavedShortLink;
