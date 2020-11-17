@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import HeaderIcon2 from 'assets/illustration-working.svg';
+import { ReactComponent as HeaderIcon2 } from 'assets/illustration-working2.svg';
 import Heading from 'Components/Atoms/Heading';
 import Paragraph from 'Components/Atoms/Paragraph';
 import Button from 'Components/Atoms/Button';
+import gsap from 'gsap';
 
 const StyledWrapper = styled.header`
   @media (min-width: 1000px) {
@@ -66,11 +67,34 @@ const StyledImg = styled.img`
 `;
 
 const Header = () => {
+  const wrapper = useRef(null);
+
+  useEffect(() => {
+    const [elements] = wrapper.current.children;
+
+    const background = elements.querySelector('#background');
+    const character = elements.querySelector('#character');
+    const desk = elements.querySelector('#desk');
+    const plant = elements.querySelector('#plant');
+
+    var tl = gsap.timeline();
+
+    tl.from(background, { duration: 0.5, x: -50, opacity: 0 });
+    tl.from(desk, { duration: 0.8, delay: 0.5, opacity: 0 });
+    tl.from(plant, { duration: 0.8, opacity: 0 });
+    tl.from(character, {
+      duration: 1,
+      scale: 0.5,
+      x: -200,
+      opacity: 0,
+    });
+  });
+
   return (
     <StyledWrapper>
       <StyledRow>
-        <StyledSvg>
-          <StyledImg src={HeaderIcon2} />
+        <StyledSvg ref={wrapper}>
+          <HeaderIcon2 />
         </StyledSvg>
       </StyledRow>
       <StyledRow>
