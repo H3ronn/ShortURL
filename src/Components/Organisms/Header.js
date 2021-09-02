@@ -79,7 +79,7 @@ const Header = () => {
 
     var tl = gsap.timeline();
 
-    tl.from(background, { duration: 0.5, x: -50, opacity: 0 });
+    tl.from(background, { duration: 0.5, delay: 2, x: -50, opacity: 0 });
     tl.from(desk, { duration: 0.8, delay: 0.5, opacity: 0 });
     tl.from(plant, { duration: 0.8, opacity: 0 });
     tl.from(character, {

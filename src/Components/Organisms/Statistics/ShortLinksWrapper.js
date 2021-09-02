@@ -27,22 +27,28 @@ const ShortLinksWrapper = () => {
 
   const getShortLink = async e => {
     e.preventDefault();
-    console.log('poszlo');
+    console.log('poszlo'); 
     const originalLinkValue = e.target[0].value;
+    console.log(originalLinkValue); 
 
+  
     try {
       const {
-        data: { hashid },
-      } = await axios.post('https://rel.ink/api/links/', {
-        url: originalLinkValue,
-      });
-      // localStorage.setItem('shortLinks', [...shortLinksTable, `https://rel.ink/${hashid}`]);
+        data: {
+          result: {
+            short_link
+          }
+        }
+      } = await axios.get(`https://api.shrtco.de/v2/shorten?url=${originalLinkValue}`);
+      console.log(short_link);
+      // localStorage.setItem('shortLinks', [...shortLinksTable, `https://rel.ink/${short_link}`]);
       // localStorage.setItem('originalLinks', [...originalLinksTable, originalLinkValue]);
-      setShortLinksTable(prevState => [...prevState, `https://rel.ink/${hashid}`]);
+      setShortLinksTable(prevState => [...prevState, short_link]);
       setOriginalLinksTable(prevState => [...prevState, originalLinkValue]);
     } catch (error) {
       console.log(error);
     }
+  
   };
 
   useEffect(() => {
